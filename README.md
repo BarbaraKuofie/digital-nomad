@@ -21,4 +21,34 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+# User 
+ - name 
+ - host => boolean => default = false 
+
+ # Property 
+ - title 
+ - address 
+ - city_id 
+ - host_id 
+ - description 
+
+
+# Stay 
+- property_id 
+- nomad_id 
+- checkin
+- checkout
+
+#  Review 
+ - property_id 
+ - nomad_id 
+ - description 
+ - rating 1-5 
+
+ # City 
+ - name 
+ - country_id 
+
+ # Country 
+ - name 
+ 
