@@ -6,11 +6,16 @@ class PropertiesController < ApplicationController
       @properties = Property.all
     end
 
-    def show      
+    def show
     end
 
     def new
-      @property = Property.new
+      if user_signed_in?
+        @property = Property.new
+    else
+        redirect_to new_user_session_path
+    end
+
     end
 
     def edit

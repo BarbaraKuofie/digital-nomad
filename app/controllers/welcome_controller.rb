@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
-    def home 
+    def home
         if user_signed_in?
-            render :home 
-        else 
+            render :home
+        else
             redirect_to new_user_session_path
-        end 
+        end
 
-    end 
-    
-end 
+    end
+
+end
