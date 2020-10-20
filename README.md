@@ -52,3 +52,12 @@ Things you may want to cover:
  # Country 
  - name 
  
+## User Stories 
+- A host can create a property to the site (done - Tom )
+- A host can update their listing with the new information (working on it -Tom)
+- A host can delete a property from the site (working on it - Tom)
+- Nomads can write a review on a property (done - Barbara)
+- All users can view a property's reviews on it's show page (barbara)
+- Nomads can remove a review on a property  (barbara)
+-Nomads can arrage stays on a property 
+- A property should have an assigned city and country 
