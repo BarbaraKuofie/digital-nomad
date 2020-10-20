@@ -61,3 +61,6 @@ Things you may want to cover:
 - Nomads can remove a review on a property  (barbara)
 -Nomads can arrage stays on a property 
 - A property should have an assigned city and country 
+
+--To Do As We Find Them 
+- On sign-up users should be able to select if they are a host or a nomad 

@@ -7,5 +7,8 @@ Avg. Rating: <%=@property.average_rating%><br>
     <%= review.description %><br>
     <%= review.rating%><br>
     <%= review.nomad.name%>
+     <% if review.nomad == current_user %>
+     <button><%=link_to "Delete", edit_review_path(review)%></button>
+     <%end%>
     </p>
 <%end%>
