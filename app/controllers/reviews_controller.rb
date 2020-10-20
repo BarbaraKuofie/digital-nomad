@@ -9,16 +9,29 @@ class ReviewsController < ApplicationController
     end
 
     def new
+      @review = Review.new
     end
 
     def edit
     end
 
     def create
+      @review = Review.new(params(review_params))
+      if @review.save 
+        redirect_to property_path(@property)
+      else 
+        render :new 
+      end
     end
 
     def update
     end
+
+    def delete 
+      @property = @review.property
+      @review.destroy 
+      redirect_to property_path(@property)
+    end 
 
     private
 

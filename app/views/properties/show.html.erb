@@ -1,0 +1,11 @@
+<h1><%=@property.title%></h1>
+Avg. Rating: <%=@property.average_rating%><br>
+
+<h3> Reviews by Nomads </h3><br>
+<%@property.reviews.each do |review|%>
+   <p>
+    <%= review.description %><br>
+    <%= review.rating%><br>
+    <%= review.nomad.name%>
+    </p>
+<%end%>
