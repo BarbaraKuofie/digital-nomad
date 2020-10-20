@@ -20,4 +20,4 @@ class User < ApplicationRecord
       User.all.where(host: false)
     end
 
-end
+  end 

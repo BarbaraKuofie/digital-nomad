@@ -29,9 +29,10 @@ class ReviewsController < ApplicationController
 
     def delete 
       @property = @review.property
+      @review = Review.find(params[:id])
       @review.destroy 
       respond_to do |format|
-      format.html {redirect_to property_reviews_url, notice: 'Review was removed'
+      format.html {redirect_to property_reviews_url, notice: 'Review was removed' }
     end 
 
     private
