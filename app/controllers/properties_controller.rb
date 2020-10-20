@@ -10,15 +10,33 @@ class PropertiesController < ApplicationController
     end
 
     def new
+      @property = Property.new
     end
 
     def edit
     end
 
     def create
+      @property = Property.new(params(property_params))
+
+      if @property.save
+        redirect_to property_path(@property)
+      else
+        flash[:errors] = @property.errors.full_messages
+        redirect_to new_property_path
+      end
+
     end
 
     def update
+
+      if @property.update(property_params)
+        redirect_to property_path(@property)
+      else
+        flash[:errors] = @property.errors.full_messages
+        redirect_to edit_property_path
+      end
+
     end
 
     private
