@@ -17,8 +17,6 @@ class StaysController < ApplicationController
       end 
     end
 
-    def edit
-    end
 
     def create
       @stay = Stay.new(params(stay_params))
@@ -30,7 +28,14 @@ class StaysController < ApplicationController
       end 
     end
 
+    def edit
+    end
+
     def update
+      if @stay.update(stay_params)
+        redirect_to stay_path(@stay)
+      else 
+        render :edit 
     end
 
     private

@@ -12,4 +12,5 @@ class Property < ApplicationRecord
         (total_ratings.to_f/total_reviews.to_f).round(2)
     end 
     
+  
 end
