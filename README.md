@@ -72,7 +72,7 @@ Things you may want to cover:
 - City show page should list the top 10 properties - based on ratings(done Tom)
 - Host home page should have a liink to list or edit their property (done - Tom)
 - Host home page should show all their properties and the average rating for all their properties. (done - Tom)
-- Host home page should show upcoming visits
+- Host home page should show upcoming visits (Done - Tom)
 - Host should be the only one to see their home page (seems to be the case now)
 - A nomad should be only one to see their home page (seems to be the case now)
 

@@ -21,7 +21,7 @@ class StaysController < ApplicationController
 
     def create
       @stay = Stay.new(stay_params)
-     @country = @stay.property.city.country 
+     @country = @stay.property.city.country
       if @stay.save
         redirect_to root_path
       else
@@ -36,9 +36,9 @@ class StaysController < ApplicationController
     def update
       if @stay.update(stay_params)
         redirect_to stay_path(@stay)
-      else 
-        render :edit 
-      end 
+      else
+        render :edit
+      end
     end
 
 

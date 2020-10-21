@@ -1,17 +1,10 @@
 <h1>Schedule a New Stay</h1>
 
-<% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-    <p><%= error %></p>
-    <%end%>
-<%end%>
-<%= form_for(@stay) do |f| %> 
-   <%= f.label "Country: " %><br>
-    <%= f.collection_select :stay_country, Country.all, :id, :name %><br>
-    <%= f.label "City: " %><br>
-    <%= f.collection_select :stay_city,  City.all , :id, :name%><br>
+ <%= flash[:errors].first.split(' ')[1..-1].join(' ') %>
+
+<%= form_for(@stay) do |f| %>
     <%= f.label "Property: " %><br>
-    <%= f.collection_select :property_id, Property.all, :id, :title %><br>
+    <%= f.collection_select :property_id, Property.all.order(:city_id), :id, :formatted_name %><br>
     <%= f.hidden_field :nomad_id, :value => current_user.id %>
     <%= f.label "Check-In: " %><br>
     <%= f.date_field(:checkin, min: Date.today) %><br>

@@ -10,9 +10,13 @@
 
 <h2>Your Upcoming Stays:</h2>
     <ul>
-    <% current_user.host_upcoming_stays%>
-    <%# <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li> %>
-    <%# <%end%> %>
+    <% if current_user.host_upcoming_stays.count > 0 %>
+    <% current_user.host_upcoming_stays.each do |stay| %>
+    <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li>
+    <%end%>
+    <%else%>
+    <%= "You have no upcoming Stays. Make sure to add your property, so Nomads can book Stays! "%>
+    <%end%>
     </ul>
 
 <button><%= link_to "Add a New Property", new_property_path %></button>

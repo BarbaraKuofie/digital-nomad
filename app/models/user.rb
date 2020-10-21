@@ -22,30 +22,30 @@ class User < ApplicationRecord
 
     ## method shows all upcoming user trips
     def nomad_upcoming_stays
-     pending =  self.stays
-        .order(checkin: :desc)
-        .where.not(checkin: nil)
-        .select { |stay| stay.checkin > (Date.today) }
-     pending_titles = pending.map{|stay|stay.property.title}
-      if pending_titles.count > 0
-        pending_titles
+      if self.stays.count > 0
+        pending =  self.stays
+            .order(checkin: :desc)
+            .where.not(checkin: nil)
+            .select { |stay| stay.checkin >= (Date.today) }
+        pending_titles = pending.map{|stay|stay.property.title}
       else
-        "You have no scheduled stays. Click below to schedule one!"
+        pending_titles = []
       end
+      pending_titles
     end
 
     # this is to show users previous trips
     def nomad_completed_stays
-      completed =  self.stays
-         .order(checkout: :desc)
-         .where.not(checkout: nil)
-         .select { |stay| stay.checkout < (Date.today) }
-      completed_titles = completed.map{|stay|stay.property.title}
-        if completed_titles.count > 0
-          completed_titles
-        else
-          "You have no past stays"
-        end
+      if self.stays.count > 0
+        completed =  self.stays
+          .order(checkout: :desc)
+          .where.not(checkout: nil)
+          .select { |stay| stay.checkout < (Date.today) }
+        completed_titles = completed.map{|stay|stay.property.title}
+      else
+        completed_titles = []
+      end
+      completed_titles
     end
 
     def host_stays
@@ -56,17 +56,16 @@ class User < ApplicationRecord
     def host_upcoming_stays
       if self.host_stays.count > 0
         pending =  self.host_stays
-         .order(checkin: :assc)
-         .where.not(checkin: nil)
-         .select { |stay| stay.checkin > (Date.today) }
+         .select { |stay| stay.checkin >= (Date.today) }
         pending_titles = pending.map{|stay|stay.property.title}
-        pending_titles
       else
-        "You have no scheduled stays. Click below to schedule one!"
+        pending_titles = []
       end
+      pending_titles
     end
 
-
+        #  .order(checkin: :assc)
+        #  .where.not(checkin: nil)
 
 
   end
