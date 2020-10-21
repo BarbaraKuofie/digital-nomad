@@ -1,11 +1,19 @@
 <h1><%= "WELCOME #{current_user.name.titleize}"%></h1>
 
+<% if current_user.avatar.attached? %>
+    <%=image_tag url_for(current_user.avatar)%>
+    <%else %>
+    <%=image_tag url_for("cat.jpg")%>
+<%end%>
+
+
 <h2><%= "DIGITAL NOMAD'S TOP 5 DESTINATIONS" %></h2>
 
     <ol><% Stay.top_5.each do |c| %>
         <li><%= link_to c, city_path(City.find_by(name: c)) %></li>
     <%end%>
     </ol>
+
 
     <ul>
     <% current_user.nomad_upcoming_stays.each do |stay|%>
@@ -18,6 +26,7 @@
     <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li>
     <%end%>
     </ul>
+    
 
 <button><%= link_to "Schedule A Stay", new_stay_path %></button>
 

@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :stays, :through => :properties
     has_many :stays, :foreign_key => 'nomad_id'
     has_many :reviews, :foreign_key => 'nomad_id'
+    has_one_attached :avatar
+    
     # has_many :blogposts
     # has_many :comments, :through => :blogposts
 
@@ -43,8 +45,8 @@ class User < ApplicationRecord
       completed_titles = completed.map{|stay|stay.property.title}
         if completed_titles.count > 0
           completed_titles
-        else
-          "You have no past stays"
+        # else
+        #   "You have no past stays"
         end
     end
 
@@ -61,8 +63,8 @@ class User < ApplicationRecord
          .select { |stay| stay.checkin > (Date.today) }
         pending_titles = pending.map{|stay|stay.property.title}
         pending_titles
-      else
-        "You have no scheduled stays. Click below to schedule one!"
+      # else
+      #   "You have no scheduled stays. Click below to schedule one!"
       end
     end
 

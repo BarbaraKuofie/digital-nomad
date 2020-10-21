@@ -3,7 +3,8 @@ class PropertiesController < ApplicationController
     before_action :find_property, only: [:show, :edit, :update]
 
     def index
-      @properties = Property.all
+       @properties = Property.all
+     
     end
 
     def show
@@ -45,8 +46,6 @@ class PropertiesController < ApplicationController
     end
 
     def destroy
-
-      @property = Property.find(params[:id])
       @property.destroy
       redirect_to root_path
 
@@ -55,7 +54,7 @@ class PropertiesController < ApplicationController
     private
 
     def find_property
-      @property = Property.find(params[:id])
+      @property = Property.find(params[:property])
     end
 
     def property_params
