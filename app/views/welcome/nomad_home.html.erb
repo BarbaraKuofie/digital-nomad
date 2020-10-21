@@ -7,11 +7,17 @@
     <%end%>
     </ol>
 
-    <% current_user.stays.each do |stay|%>
-    <%=stay.property.title%>
+    <ul>
+    <% current_user.nomad_upcoming_stays.each do |stay|%>
+    <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li>
     <%end%>
+    </ul>
 
-   
+    <ul>
+    <% current_user.nomad_completed_stays.each do |stay|%>
+    <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li>
+    <%end%>
+    </ul>
 
 <button><%= link_to "Schedule A Stay", new_stay_path %></button>
 

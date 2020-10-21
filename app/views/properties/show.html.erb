@@ -15,4 +15,8 @@ Avg. Rating: <%=@property.average_rating%><br>
 
 <%if @property.host == current_user %>
 <button><%= link_to "Edit/Delete Property", edit_property_path(@property) %></button>
-<%end%>
+<%end%><br>
+
+<%if @property.stays.include?(current_user) %>
+<button><%= link_to "Edit/Delete Stay", edit_stay_path(Stay.find_by(nomad: current_user)) %></button>
+<%end%><br>

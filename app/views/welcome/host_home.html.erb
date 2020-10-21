@@ -8,6 +8,13 @@
         <%end%>
     </ul>
 
+<h2>Your Upcoming Stays:</h2>
+    <ul>
+    <% current_user.host_upcoming_stays%>
+    <%# <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li> %>
+    <%# <%end%> %>
+    </ul>
+
 <button><%= link_to "Add a New Property", new_property_path %></button>
 
 
