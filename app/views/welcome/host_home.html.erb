@@ -1,0 +1,13 @@
+<h1><%= "WELCOME #{current_user.name.upcase}"%></h1>
+
+<h2>View/Edit Your Properties:</h2>
+    <ul>
+        <% current_user.properties.each do |p| %>
+        <li><%= link_to p.title, property_path(p) %><br>
+            <%= "Avg. Rating: #{p.average_rating}" %></li>
+        <%end%>
+    </ul>
+
+<button><%= link_to "Add a New Property", new_property_path %></button>
+
+

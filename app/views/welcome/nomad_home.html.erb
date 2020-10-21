@@ -1,0 +1,11 @@
+<h1><%= "WELCOME #{current_user.name.upcase}"%></h1>
+
+<h2><%= "DIGITAL NOMAD'S TOP 5 DESTINATIONS" %></h2>
+
+    <ol><% Stay.top_5.each do |c| %>
+    <li><%= link_to c, city_path(City.find_by(name: c)) %></li>
+    <%end%>
+    </ol>
+
+<button><%= link_to "Schedule A Stay", new_stay_path %></button>
+

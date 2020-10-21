@@ -22,7 +22,7 @@ class PropertiesController < ApplicationController
     end
 
     def create
-      @property = Property.new(params(property_params))
+      @property = Property.new(property_params)
 
       if @property.save
         redirect_to property_path(@property)
@@ -41,6 +41,14 @@ class PropertiesController < ApplicationController
         flash[:errors] = @property.errors.full_messages
         redirect_to edit_property_path
       end
+
+    end
+
+    def destroy
+
+      @property = Property.find(params[:id])
+      @property.destroy
+      redirect_to root_path
 
     end
 
