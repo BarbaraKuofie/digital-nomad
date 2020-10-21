@@ -16,24 +16,24 @@ class ReviewsController < ApplicationController
     end
 
     def create
-      @review = Review.new(params(review_params))
-      if @review.save 
+      @review = Review.new(review_params)
+      if @review.save
         redirect_to property_path(@property)
-      else 
-        render :new 
+      else
+        render :new
       end
     end
 
     def update
     end
 
-    def delete 
+    def delete
       @property = @review.property
       @review = Review.find(params[:id])
-      @review.destroy 
+      @review.destroy
       respond_to do |format|
       format.html {redirect_to property_reviews_url, notice: 'Review was removed' }
-    end 
+    end
 
     private
 

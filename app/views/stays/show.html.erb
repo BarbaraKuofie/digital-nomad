@@ -12,7 +12,3 @@ Avg. Rating: <%=@property.average_rating%><br>
      <%end%>
     </p>
 <%end%>
-
-<%if @property.host == current_user %>
-<button><%= link_to "Edit/Delete Property", edit_property_path(@property) %></button>
-<%end%>
