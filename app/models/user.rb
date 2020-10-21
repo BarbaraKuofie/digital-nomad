@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :stays, :through => :properties
     has_many :stays, :foreign_key => 'nomad_id'
     has_many :reviews, :foreign_key => 'nomad_id'
+    has_one_attached :avatar
+
     # has_many :blogposts
     # has_many :comments, :through => :blogposts
 

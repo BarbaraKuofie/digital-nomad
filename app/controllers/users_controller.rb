@@ -10,12 +10,15 @@ class UsersController < ApplicationController
     end
 
     def new
+     
     end
 
     def edit
+      @user.avatar.attach(params[:avatar])
     end
 
-    def create
+    def create 
+      @user.avatar.attach(params[:avatar])
     end
 
     def update
@@ -28,7 +31,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :host, :email, :password)
+      params.require(:user).permit(:name, :host, :email, :password, :avatar)
     end
 
 end
