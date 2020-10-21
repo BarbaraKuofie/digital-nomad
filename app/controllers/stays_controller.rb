@@ -12,6 +12,7 @@ class StaysController < ApplicationController
     def new
       if user_signed_in?
         @stay = Stay.new
+
       else
         redirect_to new_user_session_path
       end
@@ -20,6 +21,7 @@ class StaysController < ApplicationController
 
     def create
       @stay = Stay.new(stay_params)
+     @country = @stay.property.city.country 
       if @stay.save
         redirect_to root_path
       else
@@ -36,7 +38,9 @@ class StaysController < ApplicationController
         redirect_to stay_path(@stay)
       else 
         render :edit 
+      end 
     end
+
 
     private
 

@@ -5,8 +5,11 @@
     <p><%= error %></p>
     <%end%>
 <%end%>
-
-<%= form_for(@stay) do |f| %>
+<%= form_for(@stay) do |f| %> 
+   <%= f.label "Country: " %><br>
+    <%= f.collection_select :stay_country, Country.all, :id, :name %><br>
+    <%= f.label "City: " %><br>
+    <%= f.collection_select :stay_city,  City.all , :id, :name%><br>
     <%= f.label "Property: " %><br>
     <%= f.collection_select :property_id, Property.all, :id, :title %><br>
     <%= f.hidden_field :nomad_id, :value => current_user.id %>

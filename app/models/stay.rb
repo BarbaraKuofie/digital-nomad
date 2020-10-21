@@ -1,4 +1,6 @@
 class Stay < ApplicationRecord
+
+
     belongs_to :property
     belongs_to :nomad, :class_name => "User"
     has_one :review
@@ -10,4 +12,13 @@ class Stay < ApplicationRecord
         sorted = freq.sort_by {|k,v| v}.reverse.to_h
         sorted.keys[0..4]
     end
+
+    ## method to select a country from a picklist on new stay create page 
+    def stay_country
+    end 
+    ## method to select a city based on the above country (not yet working properly)
+    def stay_city 
+        # cities = Country.all.map{|country|country.cities}
+        # cities.map{|city|city.name}
+    end 
 end
