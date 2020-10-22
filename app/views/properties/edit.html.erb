@@ -17,7 +17,7 @@
         <%= f.hidden_field :host_id, :value => current_user.id %><br>
         <%= f.label "Description: " %><br>
         <%= f.text_area :description %><br>
-        <button><%=link_to "Delete Property", property_path(@property), method: :delete, data:{ confirm: 'Are you certain you want to delete this?' } %></button>
+        <button><%=link_to "Delete Property", property_path(@property), method: :delete, data:{ confirm: 'Are you sure you want to delete this property?' } %></button>
         <%= f.submit %>
     <%end%>
 <%end%>

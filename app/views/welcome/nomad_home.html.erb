@@ -1,9 +1,9 @@
 
 
-<h1><%= "WELCOME #{current_user.name.titleize}"%></h1>
+<h1><%= "Welcome #{current_user.name.titleize}"%></h1>
 
 <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar.variant(resize: "200x200") %>
+    <%= image_tag current_user.avatar %>
     <%else %>
     <%=image_tag url_for("cat.jpg")%>
 <%end%>
@@ -15,27 +15,31 @@
         <li><%= link_to c, city_path(City.find_by(name: c)) %></li>
     <%end%>
     </ol>
+   <h4><%=link_to "All Digital Nomad Countries", countries_path %></h4>
 
+<h2><%= "View/Edit Your Upcoming Stays" %></h2>
      <ul>
      <% if current_user.nomad_upcoming_stays.count > 0 %>
         <% current_user.nomad_upcoming_stays.each do |stay|%>
-        <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li>
+        <li><%=link_to stay.property.title, property_path(stay.property) %></li>
         <% end %>
      <% else %>
         <%= "You have no scheduled stays. Click below to schedule one!" %>
      <% end %>
      </ul>
 
-
+<h2><%= "Your Past Stays" %></h2>
     <ul>
      <% if current_user.nomad_completed_stays.count > 0 %>
         <% current_user.nomad_completed_stays.each do |stay|%>
-        <li><%=link_to stay, property_path(Property.find_by(title: stay)) %></li>
+        <li><%=link_to stay.property.title, property_path(stay.property) %></li>
         <% end %>
      <% else %>
         <%= "You have no past stays" %>
      <% end %>
      </ul>
 
-<button><%= link_to "Schedule A Stay", new_stay_path %></button>
+<button><%= link_to "Schedule A Stay", new_stay_path %></button><br><br>
+
+<button><%= link_to "Write A Review", new_review_path %></button>
 

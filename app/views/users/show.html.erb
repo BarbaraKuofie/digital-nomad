@@ -5,11 +5,13 @@
     <%else %>
     <%=image_tag url_for(["cat.jpg", "baby-doll.jpg", "cut-cover.jpg"].sample)%>
 
-<%end%><br>
+<%end%><br><br>
+
+<%= @user.name%>
 
 <ul>
-<h3> Visit my Properties: </h3>
 <%if @user.host?%>
+<h3> Visit my Properties: </h3>
     <% @user.properties.each do |property|%>
    <li> <%=link_to property.title, property_path(property.id)%></li>
     <%end %>

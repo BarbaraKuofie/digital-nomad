@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :find_review, only: [:show, :edit, :update]
+    before_action :find_review, only: [:show, :edit, :update, :destroy]
 
     def index
       @reviews = Review.all
@@ -18,21 +18,25 @@ class ReviewsController < ApplicationController
     def create
       @review = Review.new(review_params)
       if @review.save
-        redirect_to property_path(@property)
+        redirect_to property_path(Stay.find(@review.stay.id).property)
       else
-        render :new
+        flash[:errors] = @review.errors.full_messages
+        redirect_to new_review_path
       end
     end
 
     def update
+      if @review.update(review_params)
+        redirect_to property_path(Stay.find(@review.stay.id).property)
+      else
+        flash[:errors] = @review.errors.full_messages
+        redirect_to edit_review_path
+      end
     end
 
-    def delete
-      @property = @review.property
-      @review = Review.find(params[:id])
-      @review.destroy
-      respond_to do |format|
-      format.html {redirect_to property_reviews_url, notice: 'Review was removed' }
+    def destroy
+      @review.delete
+      redirect_to root_path
     end
 
     private
@@ -42,7 +46,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:property_id, :nomad_id, :description, :rating)
+      params.require(:review).permit(:stay_id, :nomad_id, :description, :rating)
     end
 
 end

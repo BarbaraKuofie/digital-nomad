@@ -2,7 +2,7 @@
 <h1><%= "WELCOME #{current_user.name.upcase}"%></h1>
 
 <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar.variant(resize: "200x200") %>
+    <%= image_tag current_user.avatar %>
     <%else %>
     <%=image_tag url_for("cat.jpg")%>
 <%end%>
