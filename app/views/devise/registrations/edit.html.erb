@@ -10,6 +10,15 @@
   </div>
 
   <div class="field">
+  <% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, style: "width: 200px; display: block"%>
+  <%end%>
+
+    <%= f.label "Profile Picture"%><br />
+    <%= f.file_field :avatar, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

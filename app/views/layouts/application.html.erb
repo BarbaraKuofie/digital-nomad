@@ -15,9 +15,11 @@
 <% else %>
     <button>  <%= link_to("Sign In", new_user_session_path) %></button>
 <% end %>
+
 <% if user_signed_in? %>
       <button><%= link_to("Edit Profile", edit_user_registration_path) %></button>
 <%end%>
+
   <body>
     <%= yield %>
   </body>
