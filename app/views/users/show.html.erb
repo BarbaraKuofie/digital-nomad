@@ -1,11 +1,11 @@
 
-
+<br>
 <% if @user.avatar.attached? %>
     <%=image_tag url_for(@user.avatar)%>
     <%else %>
     <%=image_tag url_for(["cat.jpg", "baby-doll.jpg", "cut-cover.jpg"].sample)%>
 
-<%end%>
+<%end%><br>
 
 <ul>
 <h3> Visit my Properties: </h3>
