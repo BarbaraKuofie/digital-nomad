@@ -1,3 +1,18 @@
-<% if current_user.avatar.attached? %>
-    <%=image_tag url_for(current_user.avatar)%>
+
+
+<% if @user.avatar.attached? %>
+    <%=image_tag url_for(@user.avatar)%>
+    <%else %>
+    <%=image_tag url_for(["cat.jpg", "baby-doll.jpg", "cut-cover.jpg"].sample)%>
+
 <%end%>
+
+<ul>
+<h3> Visit my Properties: </h3>
+<%if @user.host?%>
+    <% @user.properties.each do |property|%>
+   <li> <%=link_to property.title, property_path(property.id)%></li>
+    <%end %>
+<% end %>
+<ul>
+

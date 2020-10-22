@@ -23,7 +23,7 @@ class StaysController < ApplicationController
       @stay = Stay.new(stay_params)
      @country = @stay.property.city.country
       if @stay.save
-        redirect_to root_path
+        redirect_to  user_session_path 
       else
         flash[:errors] = @stay.errors.full_messages
         redirect_to new_stay_path
