@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
-User.destroy_all
-Country.destroy_all
-City.destroy_all
-Property.destroy_all
-Review.destroy_all
-Stay.destroy_all
+# User.destroy_all
+# Country.destroy_all
+# City.destroy_all
+# Property.destroy_all
+# Review.destroy_all
+# Stay.destroy_all
 
 30.times do
     User.create({
@@ -59,9 +59,9 @@ paris = City.create({
     country_id: mexico.id
  })
 
-10.times do
+30.times do
     Property.create({
-        title: Faker::Movies::Hobbit.location,
+        title: Faker::Address.unique.community,
         address: Faker::Address.street_address,
         city: City.all.sample,
         host:  User.where(host: true).sample,
@@ -69,12 +69,12 @@ paris = City.create({
     })
 end
 
-30.times do
+60.times do
     stay = Stay.create({
         property: Property.all.sample,
         nomad:  User.where(host: false).sample,
-        checkin: Faker::Date.between(from: '2020-09-23', to: '2020-11-25'),
-        checkout: Faker::Date.between(from: '2020-10-24', to: '2020-12-27')
+        checkin: Faker::Date.between(from: '2020-09-23', to: '2020-10-27'),
+        checkout: Faker::Date.between(from: '2020-10-24', to: '2020-10-27')
     })
 end
 
