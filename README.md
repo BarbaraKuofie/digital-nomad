@@ -87,3 +87,9 @@ page ==>past stays ==5 listings ==> listing 1> listing 1 show page (review edit/
 -- available listings forms (done Barbara)
 user (start_date, end_date)
 start_date&end_date |||| start_date&end_date
+
+available_properties = []
+        
+
+- Add host average rating 
+- If host has rating above 4 - they should get "Nomads Favorite Badge"

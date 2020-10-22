@@ -1,5 +1,13 @@
 <h1><%=@property.title%></h1>
 Avg. Rating: <%=@property.average_rating%><br>
+Host: <%= link_to @property.host.name, user_path(@property.host.id)%><br />
+
+<% if @property.image.attached?%>
+   <%=image_tag url_for(@property.image)%>
+    <%else %>
+    <%=image_tag url_for(["casa.jpg", "coffee_house.jpg", "modern.jpg", "poolhouse.jpg", "victorian.jpg", "grass_field.jpg"].sample)%>
+<%end%>
+
 
 <h3> Reviews by Nomads </h3><br>
 <%@property.reviews.each do |review|%>
@@ -12,7 +20,14 @@ Avg. Rating: <%=@property.average_rating%><br>
      <%end%>
     </p>
 <%end%>
+<h3> Checkout Nomads Currently Staying Here! </h3>
+<ol>
+    <%@property.current_nomads.each do |stay|%>
+      
+        <li> <%=link_to stay.nomad.name, user_path(stay.nomad.id)%></li>
 
+    <% end %>
+<ol>
 <%if @property.host == current_user %>
 <button><%= link_to "Edit/Delete Property", edit_property_path(@property) %></button>
 <%end%><br>

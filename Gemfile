@@ -58,3 +58,12 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 ## for creating a sign-in flow 
 gem 'devise'
+
+## to enable image processing
+gem 'image_processing', '~> 1.2'
+
+## to enable image upload 
+gem 'mini_magick'
+
+## Adding boostrap gem for styling 
+gem 'bootstrap'

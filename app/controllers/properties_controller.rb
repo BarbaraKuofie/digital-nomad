@@ -54,11 +54,11 @@ class PropertiesController < ApplicationController
     private
 
     def find_property
-      @property = Property.find(params[:property])
+      @property = Property.find(params[:id])
     end
 
     def property_params
-      params.require(:property).permit(:title, :address, :city_id, :host_id, :description)
+      params.require(:property).permit(:title, :address, :city_id, :host_id, :description, :image)
     end
 
 end

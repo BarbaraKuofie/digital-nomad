@@ -3,20 +3,19 @@ class City < ApplicationRecord
     has_many :properties
 
     def available_properties (start_date, end_date)
-        available_properties = []
-        self.properties.each do |property|
-            available = true 
-            property.stays.each do |stay|
+        if self.city_stays.count > 0
+            open_properties = []
+        self.city_stays.each do |stay|
             if stay.checkout <= start_date.to_date || end_date.to_date <= stay.checkin
-            else 
-                available = false 
+                open_properties << stay.property
             end 
-            end 
-            if available
-                available_properties << property
-            end 
-             available_properties
-        end  
+        end
+        end
+         open_properties
+    end 
+
+    def city_stays 
+        self.properties.map{|property|property.stays}.flatten 
     end 
 
 end
