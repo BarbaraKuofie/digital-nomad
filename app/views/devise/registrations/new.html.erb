@@ -1,47 +1,61 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
+<html>
+<head>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <title class="sign-up"> sign up </title>
 
-<div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-  
-    <%= f.label 'Host or Nomad?' %><br />
-    <%= f.select :host, [["Host", true], ['Nomad', false]] %>
-  </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
 
-<div class="field">
-  <% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar, style: "width: 200px; display: block"%>
-  <%end%>
+</head>
 
-    <%= f.label "Profile Picture"%><br />
-    <%= f.file_field :avatar, class: "form-control" %>
-  </div>
+<body class="sign-up">
+<!-- WEB PAGE CONTENT BELOW-->
+<section class="sign-up">
+    <h2 class="title">Join The Ditigal Nomad Community!</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+        <%= f.label 'Host or Nomad?' %><br />
+        <%= f.select :host, [["Host", true], ['Nomad', false]] %> <br />
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, style: "width: 200px; display: block"%>
+      <%end%>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+        <%= f.label "Profile Picture"%><br />
+        <%= f.file_field :avatar, class: "form-control" %> <br />
+      </div>
 
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div >
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="button">
+      <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+<section>
 <%= render "devise/shared/links" %>
+</body>
+</html>

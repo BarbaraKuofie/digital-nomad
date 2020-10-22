@@ -1,21 +1,31 @@
 
+<body >
+<section class="welcome">
+<h3><span>WELCOME </span><span style="font-family:cursive"><%="#{current_user.name.titleize}"%></span></h3>
+</section>
+<div class="cont-1">
 
-<h1><%= "WELCOME #{current_user.name.titleize}"%></h1>
-
+<section>
 <% if current_user.avatar.attached? %>
     <%= image_tag current_user.avatar.variant(resize: "200x200") %>
     <%else %>
     <%=image_tag url_for("cat.jpg")%>
 <%end%>
-
-
-<h2><%= "DIGITAL NOMAD'S TOP 5 DESTINATIONS" %></h2>
+</section>
+</div>
+<div >
+<section>
+<h2><%= "My Top 5 Destinations" %></h2>
 
     <ol><% Stay.top_5.each do |c| %>
         <li><%= link_to c, city_path(City.find_by(name: c)) %></li>
     <%end%>
     </ol>
-
+</section >
+</div>
+<div>
+<section>
+<h2> My Upcoming Stays</h2>
      <ul>
      <% if current_user.nomad_upcoming_stays.count > 0 %>
         <% current_user.nomad_upcoming_stays.each do |stay|%>
@@ -25,7 +35,11 @@
         <%= "You have no scheduled stays. Click below to schedule one!" %>
      <% end %>
      </ul>
-
+</section>
+</div>
+<div>
+<section>
+<h2 > My Past Stays </h2>
 
     <ul>
      <% if current_user.nomad_completed_stays.count > 0 %>
@@ -36,6 +50,8 @@
         <%= "You have no past stays" %>
      <% end %>
      </ul>
+     </section>
+</div>
+<button type="button" class="btn btn-primary"><%= link_to "Schedule A Stay", new_stay_path %></button>
 
-<button><%= link_to "Schedule A Stay", new_stay_path %></button>
-
+</body>

@@ -1,0 +1,47 @@
+h2.title {
+    font-size: 60px;
+    font-family: cursive;
+    color: white;
+} 
+section.welcome{
+    text-emphasis: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: #003554;
+    padding: 10px;
+}
+section.home{
+    background-color: #253d5b;
+    
+}
+section.sign-up{
+    text-align: center;
+    
+}
+
+ body.sign-up {
+     background-image: url("welcome3.jpg");
+     text-align: center;
+     font-size: 20px;
+ }
+
+ /* .btn-success{
+     color: black;  
+     transition-duration: .4s;
+ } */
+div.page{
+    background-color: grey;
+}
+img {
+margin: 80px;
+width: 400px;
+border-radius: 50%;
+
+}
+body.home{
+    background-color: #fbfefb;
+}
+h2.top_5{
+    text-decoration-line: underline;
+    font-family: -apple-system;
+}
