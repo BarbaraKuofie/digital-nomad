@@ -1,6 +1,6 @@
 <h3> Available Properties In this City! </h3>
 <ul>
-<% @city.available_properties(Date.today, "2020-12-30").each do |property|%>
-   <li> <%= link_to property.title, property_path(property.id) %></li>
+<% @city.available_properties(Date.today, Date.today + 1.week).each do |property|%>
+   <li><%= link_to property.title, property_path(property.id) %></li>
 <%end%>
 </ul>
