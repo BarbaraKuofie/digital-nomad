@@ -18,7 +18,17 @@
     font-size: 20px;
     color: white;
     padding: 120px;
-    background-image: url("welcome3.jpg")
+    background-image: url("welcome.jpg")
+}
+
+
+.welcome3{
+    text-emphasis: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    color: white;
+    padding: 120px;
+    background-image: url("welcome.jpg")
 }
 section.home{
     background-color: #253d5b;
@@ -81,3 +91,8 @@ section.sign-up{
  .link2{
      color: white;
  }
+ .link3{
+     color: blue;
+     font-size: 20px;
+ }
+ 

@@ -1,5 +1,5 @@
 <body class="home" >
-<section class="welcome">
+<section class="welcome3">
 <h3><span>Host: </span><span style="font-family:cursive"><%="#{current_user.name.titleize}"%></span></h3>
 </section>
 <div class="whole-page">
@@ -31,7 +31,7 @@
 <h2>View/Edit Your Properties:</h2>
     <ul>
         <% current_user.properties.each do |p| %>
-        <li><%= link_to p.title, property_path(p) %><br>
+        <li><%= link_to p.title, property_path(p), :class=>"link3" %><br>
             <%= "Avg. Rating: #{p.average_rating}" %></li>
         <%end%>
     </ul>
