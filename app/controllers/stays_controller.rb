@@ -1,6 +1,6 @@
 class StaysController < ApplicationController
 
-    before_action :find_stay, only: [:show, :edit, :update]
+    before_action :find_stay, only: [:show, :edit, :update, :destroy]
 
     def index
       @stays = Stay.all
@@ -23,7 +23,7 @@ class StaysController < ApplicationController
       @stay = Stay.new(stay_params)
      @country = @stay.property.city.country
       if @stay.save
-        redirect_to  user_session_path 
+        redirect_to  user_session_path
       else
         flash[:errors] = @stay.errors.full_messages
         redirect_to new_stay_path
@@ -35,12 +35,17 @@ class StaysController < ApplicationController
 
     def update
       if @stay.update(stay_params)
-        redirect_to stay_path(@stay)
+        redirect_to root_path
       else
-        render :edit
+        flash[:errors] = @stay.errors.full_messages
+        redirect_to edit_stay_path
       end
     end
 
+    def destroy
+      @stay.delete
+      redirect_to root_path
+    end
 
     private
 

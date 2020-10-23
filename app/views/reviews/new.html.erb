@@ -1,27 +1,25 @@
-<%= form_for (@review) do |f|%>
-<% if @review.errors.any?%>
-<div id = "error_explanation">
-    <h4> 
-        <%= pluralize(@review.errors.count, "error")%>
-            Fix any errors before saving your review:
-    </h4>
-    <ul>
-        <% @review.errors.full.messages.each do |m|%>
-            <li><%= m %></li>
+<h1>Write a New Review</h1>
+
+    <div id = "error_explanation">
+        <% if flash[:errors] %>
+            <% flash[:errors].each do |error| %>
+            <p><%= error %></p>
+            <%end%>
         <%end%>
-    </ul>
-</div>
-<%end%>
+    </div>
 
-
+<%= form_for (@review) do |f|%>
 <div class = "field<% 'field_with_errors' if @review.errors[:property_id].any?%>">
-<%=f.collection_select :property, %>
-<%=f.text_area :description%><br>
-<label>Rate Property: </label>
+<%=f.label "Stay: " %>
+<%=f.collection_select :stay_id, Stay.all.where("nomad_id = ? AND checkout < ?", current_user, Date.today), :id, :stay_date_and_name %><br><br>
+<%=f.label "Write your review: " %> <br>
+<%=f.text_area :description%><br><br>
+<%= f.hidden_field :nomad_id, :value => current_user.id %>
+<%=f.label "Rate Property: " %>
 <%=f.radio_button :rating, 1%> 1
 <%=f.radio_button :rating, 2%> 2
 <%=f.radio_button :rating, 3%> 3
 <%=f.radio_button :rating, 4%> 4
-<%=f.radio_button :rating, 5%> 5<br>
+<%=f.radio_button :rating, 5%> 5<br><br>
 <%=f.submit "Add Review"%>
 <%end%>

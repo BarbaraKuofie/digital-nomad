@@ -1,13 +1,16 @@
 class Stay < ApplicationRecord
 
-
     belongs_to :property
     belongs_to :nomad, :class_name => "User"
     has_one :review
 
+    validates :checkin, presence: true
+    validates :checkout, presence: true
+
     validate :dates_available
 
     def dates_available
+        return unless errors.messages.blank?
         property_stays = Stay.all.where(property: self.property)
         property_stays.each do |stay|
             if stay.checkout <= self.checkin || self.checkout <= stay.checkin
@@ -24,6 +27,10 @@ class Stay < ApplicationRecord
         freq = stay_cities.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
         sorted = freq.sort_by {|k,v| v}.reverse.to_h
         sorted.keys[0..4]
+    end
+
+    def stay_date_and_name
+        "#{checkout} | #{property.title}"
     end
 
     ## method to select a country from a picklist on new stay create page

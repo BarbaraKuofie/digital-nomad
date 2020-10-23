@@ -1,18 +1,68 @@
 
-
+<body class="home" >
+<section class="welcome2">
+<h3><span> Nomad: <%=@user.name.titleize%>
+</section>
+<div class="whole-page">
+<div class="card" style="width: 18rem;">
+<section class="home">
 <% if @user.avatar.attached? %>
-    <%=image_tag url_for(@user.avatar)%>
+    <%=image_tag url_for(@user.avatar), :class=>"card-img-top" %>
     <%else %>
-    <%=image_tag url_for(["cat.jpg", "baby-doll.jpg", "cut-cover.jpg"].sample)%>
-
+    <%=image_tag url_for(["cat.jpg", "baby-doll.jpg", "cut-cover.jpg"].sample), :class=>"card-img-top"%>
 <%end%>
-
+    <div class="card-body">
+    </section>
+    </div> 
+    <div class="top-destinations">
+    <section>
+    <h3 class="card-title">My Top 5 Destinations</h5>   
+        <% Stay.top_5.each do |c| %>  
+        <%= link_to c, city_path(City.find_by(name: c)) %><br/>
+        <%end%>
+    </section >
+    </div>
+<div >
+<section class="upcoming-stays">
+<h3 class="card-title"> <%=@user.name.titleize%>'s Upcoming Stays</h3>
+  
+     <% if @user.nomad_upcoming_stays.count > 0 %>
+        <% @user.nomad_upcoming_stays.each do |stay|%>
+        <i class="em em-derelict_house_building" aria-role="presentation" aria-label=""></i><%=link_to stay.property.title, property_path(stay.property)%><br />
+        <% end %>
+     <% else %>
+        <%= "Their life is full of sorrow!" %><br /> 
+     <% end %>
+</section>
+</div>
+<div>
+<section class="past-stays" > 
+<%if @user.host?%>
+<h3 class="card-title" > <%=@user.name.titleize%>'s Past Stays </h3>
+    <ul>
+     <% if @user.nomad_completed_stays.count > 0 %>
+        <% @user.nomad_completed_stays.each do |stay|%>
+        <%=link_to stay.property.title, property_path(stay.property) %>
+        <% end %>
+     <% else %>
+        <%= "They have no past stays" %>
+     <% end %>
+     </ul>
+     <%end%>
+     </section >
+</div>
+<div>
+<section class="upcoming-stays">
+<h3 class="card-title"> Visit my Properties: </h3>
 <ul>
-<h3> Visit my Properties: </h3>
 <%if @user.host?%>
     <% @user.properties.each do |property|%>
-   <li> <%=link_to property.title, property_path(property.id)%></li>
+  <li> <p> <%=link_to property.title, property_path(property.id)%></li>
     <%end %>
+    <br /><button class="btn btn-info"><%= link_to ".", new_stay_path %> schedule a stay </button>
 <% end %>
-<ul>
-
+</ul>
+</section>
+</div>
+</div>
+</body>
