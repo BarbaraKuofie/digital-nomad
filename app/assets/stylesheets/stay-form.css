@@ -44,3 +44,18 @@ div.video-background video {
 .account-wall input[type=email], .account-wall input[type=password]{margin:5px 5px;width:280px;}
 .account-wall div{display:inline-block; width:165px;}
 .account-wall input[type=submit]{width:110px;}
+
+
+.errors{
+    font-family: initial;
+    color: #efca08;
+}
+
+.right-shift{
+    text-indent: 80px;
+}
+.formstyle{
+    color: white;
+    font-weight: bolder;
+  
+}

@@ -15,7 +15,7 @@ class Stay < ApplicationRecord
         property_stays.each do |stay|
             if stay.checkout <= self.checkin || self.checkout <= stay.checkin
             else
-                errors.add(:stay, "Those dates are unavailable. Please choose a different property or date range.")
+                errors.add(:stay, "for those dates is unavailable. Please choose a different property or date range.")
             end
         end
     end

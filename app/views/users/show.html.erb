@@ -1,7 +1,7 @@
 
 <body class="home" >
 <section class="welcome2">
-<h3><span> Nomad: <%=@user.name.titleize%>
+<h3><span> <%=@user.name.titleize%>
 </section>
 <div class="whole-page">
 <div class="card" style="width: 18rem;">
@@ -24,8 +24,8 @@
     </div>
 <div >
 <section class="upcoming-stays">
+    <% unless @user.host%>
 <h3 class="card-title"> <%=@user.name.titleize%>'s Upcoming Stays</h3>
-  
      <% if @user.nomad_upcoming_stays.count > 0 %>
         <% @user.nomad_upcoming_stays.each do |stay|%>
         <i class="em em-derelict_house_building" aria-role="presentation" aria-label=""></i><%=link_to stay.property.title, property_path(stay.property)%><br />
@@ -33,11 +33,12 @@
      <% else %>
         <%= "Their life is full of sorrow!" %><br /> 
      <% end %>
+     <%end%>
 </section>
 </div>
 <div>
 <section class="past-stays" > 
-<%if @user.host?%>
+<% unless @user.host%>
 <h3 class="card-title" > <%=@user.name.titleize%>'s Past Stays </h3>
     <ul>
      <% if @user.nomad_completed_stays.count > 0 %>
@@ -52,12 +53,11 @@
      </section >
 </div>
 <div>
-<section class="upcoming-stays">
+<section >
 <h3 class="card-title"> Visit my Properties: </h3>
-<ul>
 <%if @user.host?%>
     <% @user.properties.each do |property|%>
-  <li> <p> <%=link_to property.title, property_path(property.id)%></li>
+   <p> <%=link_to property.title, property_path(property.id)%></p>
     <%end %>
     <br /><button class="btn btn-info"><%= link_to ".", new_stay_path %> schedule a stay </button>
 <% end %>

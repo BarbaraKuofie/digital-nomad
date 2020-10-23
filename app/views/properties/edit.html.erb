@@ -1,8 +1,10 @@
-<h1>Edit Property Listing</h1>
+<body class="property-body">
+
+<h1 class="title">Edit Property</h1>
 
 <% if flash[:errors] %>
     <% flash[:errors].each do |error| %>
-    <p><%= error %></p>
+    <p class="errors"><%= error %></p>
     <%end%>
 <%end%>
 
@@ -17,7 +19,12 @@
         <%= f.hidden_field :host_id, :value => current_user.id %><br>
         <%= f.label "Description: " %><br>
         <%= f.text_area :description %><br>
-        <button><%=link_to "Delete Property", property_path(@property), method: :delete, data:{ confirm: 'Are you sure you want to delete this property?' } %></button>
-        <%= f.submit %>
+         <%= button_tag(type: 'submit', class: "btn btn-outline-info") do %>
+        Update Property
+        <% end %>
+        <br />
+        <br />
+        <%=link_to "Delete Property", property_path(@property), method: :delete, data:{ confirm: 'Are you sure you want to delete this property?' }, :class=>"btn btn-outline-info"%>
+      
     <%end%>
 <%end%>

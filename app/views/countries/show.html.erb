@@ -1,6 +1,11 @@
+<div class="country-show">
+    <%=@country.name%>
+</div>
+<body class="city-body">
 <h1><%= "Digital Nomad Cities in #{@country.name}" %></h1>
-   <ul>
+
     <% @country.cities.each do |c| %>
-   <li> <%= link_to c.name, city_path(c) %></li>
+   <p><%= link_to c.name, city_path(c), :class=>"links"%></p>
     <%end%>
-    </ul>
+
+ </body>

@@ -1,0 +1,9 @@
+.country-show{
+    background-image: url("country-show2.jpg");
+    padding: 120px;
+    text-align: center;
+    background-position: center;
+    color: white;
+    font-family: cursive;
+    font-size: 50px;
+}

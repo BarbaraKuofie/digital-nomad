@@ -47,19 +47,8 @@
     <% if current_user.stays.where("property_id = ? AND checkin > ?", @property, Date.today).count > 0 %>
           <button class="btn btn-outline-info"><%= link_to "Edit/Delete Stay", edit_stay_path(Stay.find_by(nomad: current_user)) %></button>
      <%end%><br>
-</div><br />
-<div class="headers"> 
-<h3><%if @property.current_nomads.count > 0 %>
-    <%= "Checkout Nomads Currently Staying Here!" %></h3>
-    <%end%> 
+</div><br /><br />
 
-    <%@property.current_nomads.each do |stay|%>
-
-        <p> <%=link_to stay.nomad.name, user_path(stay.nomad.id)%></p>
-
-    <% end %>
-
-</div><br />
 
 <div style="flex-grow" >
 <h3 class="headers"> Reviews by Nomads: </h3>
@@ -74,7 +63,20 @@
      <%end%>
    
 <%end%>
-</div>
+</div><br /><br />
+
+<div class="headers"> 
+<h4><%if @property.current_nomads.count > 0 %>
+    <%= "Nomads Currently Staying Here!" %></h4>
+    <%end%> 
+
+    <%@property.current_nomads.each do |stay|%>
+
+        <p> <%=link_to stay.nomad.name, user_path(stay.nomad.id)%></p>
+
+    <% end %>
+
+</div><br />
 
 
 </div>

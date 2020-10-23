@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
     ## method shows all upcoming user trips
     def nomad_upcoming_stays
-      Stay.all.where("nomad_id = ? AND checkin > ?", self, Date.today)
+      Stay.all.where("nomad_id = ? AND checkin >= ?", self, Date.today)
     end
 
     #   if self.stays.count > 0

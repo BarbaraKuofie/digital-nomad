@@ -1,21 +1,28 @@
 
-<div class="top-page">
-<%= video_tag( 'lazy_river.mp4', id: 'background', autoplay: true, loop: true, muted: true )%>
-</div class="form">
+<div class="city-page">
 <h1 class="title"><%= @city.name %></h1>
-
 <h2><%= link_to @city.country.name, country_path(@city.country) %></h2>
-
+</div>
+<body class="city-body"> 
+<div class="available">
 <h3 class="card-title"><%= "Properties available in #{@city.name} this week!" %></h3>
-<ul>
+
+<% if @city.available_properties.count > 0%>
 <% @city.available_properties.each do |property|%>
-   <li><%= link_to property.title, property_path(property.id) %></li>
-<%end%>
-</ul>
-<h3><%="All Porperties in #{@city.name}" %></h3>
-<ul>
+   <p><%= link_to property.title, property_path(property.id) %></p>
+<%end%> 
+ <%else %>
+ <p style="color:#0077b6"><%= "No available properties this week."%></p>
+ <%end%>
+
+</div ><br />
+<div class="all-properties" >
+<h3><%="All Properties in #{@city.name}" %></h3>
+
 <% @city.properties.each do |property|%>
-   <li><%= link_to property.title, property_path(property.id) %></li>
+  <p> <%= link_to property.title, property_path(property.id), :class=>"links"%></p>
 <%end%>
-</ul>
+
+</div>
+</body>
 

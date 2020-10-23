@@ -1,20 +1,19 @@
-
-<h1><%= "WELCOME #{current_user.name.upcase}"%></h1>
-
+<body class="home" >
+<section class="welcome">
+<h3><span>Host: </span><span style="font-family:cursive"><%="#{current_user.name.titleize}"%></span></h3>
+</section>
+<div class="whole-page">
+<div class="card" style="width: 18rem;">
+<section class="home">
 <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar %>
+    <%= image_tag current_user.avatar, :class =>"card-img-top" %>
     <%else %>
-    <%=image_tag url_for("cat.jpg")%>
+    <%=image_tag url_for("cat.jpg"), :class =>"card-img-top"%>
 <%end%>
+</section>
+</div>
 
-<h2>View/Edit Your Properties:</h2>
-    <ul>
-        <% current_user.properties.each do |p| %>
-        <li><%= link_to p.title, property_path(p) %><br>
-            <%= "Avg. Rating: #{p.average_rating}" %></li>
-        <%end%>
-    </ul>
-
+<div class="upcoming-stays">
 <h2>Your Upcoming Stays:</h2>
     <ul>
     <% if current_user.host_upcoming_stays.count > 0 %>
@@ -26,6 +25,17 @@
     <%end%>
     </ul>
 
-<button><%= link_to "Add a New Property", new_property_path %></button>
+<button class="btn btn-info"><%= link_to "Add a New Property", new_property_path, :class=>"link2" %></button>
+</div>
+<div class="past-stays">
+<h2>View/Edit Your Properties:</h2>
+    <ul>
+        <% current_user.properties.each do |p| %>
+        <li><%= link_to p.title, property_path(p) %><br>
+            <%= "Avg. Rating: #{p.average_rating}" %></li>
+        <%end%>
+    </ul>
+</div>
 
+</div>
 
