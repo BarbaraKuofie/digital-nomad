@@ -13,11 +13,11 @@
 <%end%>
     <div class="card-body">
     </section>
-    </div> 
+    </div>
     <div class="top-destinations">
     <section>
-    <h3 class="card-title">My Top 5 Destinations</h5>   
-        <% Stay.top_5.each do |c| %>  
+    <h3 class="card-title">My Top 5 Destinations</h5>
+        <% Stay.top_5.each do |c| %>
         <%= link_to c, city_path(City.find_by(name: c)) %><br/>
         <%end%>
     </section >
@@ -31,13 +31,13 @@
         <i class="em em-derelict_house_building" aria-role="presentation" aria-label=""></i><%=link_to stay.property.title, property_path(stay.property)%><br />
         <% end %>
      <% else %>
-        <%= "Their life is full of sorrow!" %><br /> 
+        <%= "Their life is full of sorrow!" %><br />
      <% end %>
      <%end%>
 </section>
 </div>
 <div>
-<section class="past-stays" > 
+<section class="past-stays" >
 <% unless @user.host%>
 <h3 class="card-title" > <%=@user.name.titleize%>'s Past Stays </h3>
     <ul>
@@ -54,6 +54,7 @@
 </div>
 <div>
 <section >
+<% if @user.host? %>
 <h3 class="card-title"> Visit my Properties: </h3>
 <%if @user.host?%>
     <% @user.properties.each do |property|%>
@@ -61,6 +62,7 @@
     <%end %>
     <br /><button class="btn btn-info"><%= link_to ".", new_stay_path %> schedule a stay </button>
 <% end %>
+<%end%>
 </ul>
 </section>
 </div>

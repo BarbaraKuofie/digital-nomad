@@ -19,9 +19,12 @@
     <%= f.date_field(:checkin, min: Date.today) %><br>
     <%= f.label "Check-Out: " %><br>
     <%= f.date_field(:checkout, min: Date.today) %><br><br/>
-    <%= button_tag(type: 'submit', class: "btn btn-outline-secondary") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-outline-info") do %>
         Update Stay
-        <% end %>
+        <br />
+        <% end %><br><br>
+    <%=link_to "Cancel Stay", stay_path(@stay), method: :delete, data:{ confirm: 'Are you sure you want to cancel your Stay?' }, :class=>"btn btn-outline-info"%>
+
 <%end%>
 </div>
 </div>
