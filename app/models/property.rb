@@ -28,4 +28,15 @@ class Property < ApplicationRecord
         staying
     end 
 
+    def previous_nomads
+        if self.stays.count > 0
+            checkin = self.stays.select{|stay|stay.checkin< Date.today}
+            checkout = self.stays.select{|stay|stay.checkout < Date.today}
+            stayed = checkin & checkout
+         else
+             stayed = []
+         end 
+         stayed
+    end 
+
 end

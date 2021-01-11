@@ -47,21 +47,26 @@
     <% if current_user.stays.where("property_id = ? AND checkin > ?", @property, Date.today).count > 0 %>
           <button class="btn btn-outline-info"><%= link_to "Edit/Delete Stay", edit_stay_path(Stay.find_by(nomad: current_user)) %></button>
      <%end%><br>
+    
+    <button class="btn btn-outline-info"><%= link_to "Add Review", new_review_path%></button>
+ 
 </div><br /><br />
 
 
 <div style="flex-grow" >
 <h3 class="headers"> Reviews by Nomads: </h3>
+     
 <%@property.reviews.each do |review|%>
    <button class="btn btn-outline-secondary">
     <%= review.description %><br>
     <%="Rating (1-5): #{review.rating}"%><br>
     <%= "Nomad: #{review.nomad.name}"%>
     </button>
+    <br />
      <% if review.nomad == current_user %>
-     <button><%=link_to "Edit/Delete Review", edit_review_path(review)%></button>
+     <button class="btn btn-outline-info"><%=link_to "Edit/Delete Review", edit_review_path(review)%></button>
      <%end%>
-   
+  
 <%end%>
 </div><br /><br />
 
